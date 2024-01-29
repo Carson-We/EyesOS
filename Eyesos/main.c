@@ -1,27 +1,30 @@
 #include <stdio.h>
 
-extern void turnOnSystem();
-extern void turnOnCamera(char* cameraName);
-extern void turnOnLidar();
-extern void useOEClassifier();
-extern void detectObject();
-
-int main() {
-    printf("User: ADA, turn on\n");
-    turnOnSystem();
-
-    printf("Augmented Vision\n");
-    printf("ADA: turn on alpha camera & beta camera, LIDAR\n");
-    turnOnCamera("alpha");
-    turnOnCamera("beta");
-    turnOnLidar();
-
-    printf("ADA: use OEClassifier to classification object\n");
-    useOEClassifier();
-
-    printf("If detected object: ADA: Spotted to your left/right? distance? Still left? step.\n");
-    detectObject();
-
-    return 0;
+void ADA_turnOn() {
+    printf("ADA: turn on\n");
 }
 
+void ADA_useCameraAndLIDAR() {
+    printf("ADA: use alpha camera & beta camera, LIDAR\n");
+}
+
+void ADA_objectDetection() {
+    printf("ADA: use OEClassifier to classify objects\n");
+}
+
+void ADA_objectSpotted(char* position, int distance) {
+    printf("ADA: Spotted to your %s, distance: %d. Still left? Step.\n", position, distance);
+}
+
+int main() {
+    ADA_turnOn();
+    ADA_useCameraAndLIDAR();
+    ADA_objectDetection();
+    
+    char* objectPosition = "left";
+    int objectDistance = 10;
+    
+    ADA_objectSpotted(objectPosition, objectDistance);
+    
+    return 0;
+}
